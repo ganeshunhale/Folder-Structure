@@ -131,7 +131,7 @@ const FolderStructure = () => {
     };
 
     return (
-        <div style={{ borderRight: '1px solid white', height: '100%', padding: '1rem' ,minWidth:'300px'}}>
+        <div className="structure">
             <div className='mod-func'>
                 <div className="mod-logo" onClick={handleCreate} disabled={!selectedItem}>
                     <VscNewFile />
@@ -150,6 +150,7 @@ const FolderStructure = () => {
                         name={key}
                         content={value}
                         onSelect={setSelectedItem}
+                        selectedItem={selectedItem}
                     />
                 ))}
             </div>

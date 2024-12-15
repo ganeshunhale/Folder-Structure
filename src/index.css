@@ -17,8 +17,16 @@ body {
   margin: 0;
   display: flex;
   background-color: black;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   color: rgb(170, 170, 170);
+}
+
+.structure {
+  background-color: rgb(24, 24, 24);
+  border-right: 1px solid white; 
+  height: 100%; 
+  padding: 1rem; 
+  min-width:10rem;
 }
 
 .mod-func {
@@ -32,3 +40,7 @@ body {
   cursor: pointer;
 }
 
+.selectedItem {
+  background-color: rgb(65, 65, 65);
+  display: flex;
+}

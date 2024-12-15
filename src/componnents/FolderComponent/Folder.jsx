@@ -1,7 +1,7 @@
 import React, {useState } from "react";
-
+import { MdOutlineKeyboardArrowRight ,MdKeyboardArrowUp} from "react-icons/md";
 // Recursive Component to Render Folder Structure
-const Folder = ({ name, content, depth = 0, onSelect }) => {
+const Folder = ({ name, content, depth = 0, onSelect ,selectedItem}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => setIsOpen(!isOpen);
@@ -17,9 +17,11 @@ const Folder = ({ name, content, depth = 0, onSelect }) => {
               handleToggle();
               handleSelect();
             }}
-            style={{ cursor: "pointer"}}
+            style={{ cursor: "pointer", marginLeft:depth?25*depth:0}}
+            className={selectedItem?.name==name?"selectedItem":""}
           >
-            {isOpen ? "^📂" : "+📁"} {name}
+            {isOpen ? <span><MdKeyboardArrowUp/>📂 </span>: (
+             <span><MdOutlineKeyboardArrowRight />📁</span>)} {name}
           </span>
           {isOpen && (
             <div>
@@ -27,7 +29,7 @@ const Folder = ({ name, content, depth = 0, onSelect }) => {
                 ? content.map((file) => (
                     <div
                       key={file}
-                      style={{ marginLeft: 20 }}
+                      style={{ marginLeft: depth?25*depth:10 }}
                       onClick={() => onSelect({ name: file, content: null })}
                     >
                       📄 {file}
@@ -40,6 +42,7 @@ const Folder = ({ name, content, depth = 0, onSelect }) => {
                       content={value}
                       depth={depth + 1}
                       onSelect={onSelect}
+                      selectedItem={selectedItem}
                     />
                   ))}
             </div>
